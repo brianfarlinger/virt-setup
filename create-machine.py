@@ -31,10 +31,20 @@ BOOTSCRIPT = " --firstboot " + PATH_TO_SCRIPT
 copy2("/home/kvm/templates/template.qemu", FILEPATH)
 
 #runs virt-customize to edit the image.
-subprocess.Popen("virt-sysprep" + FILE + HOSTNAME + RUN + BOOTSCRIPT)
+customize_image()
 
 #runs virt-install 
 create_vm()
+
+def customize_image():
+  #Defines options for customizing image
+  file_path = " --add /home/kvm/disks/" + NAME_DISK
+  host_name = " --hostname " + NAME
+  command_1 = "echo 'this is a command'"
+  run = " --run-command " + COMMAND1
+  path_to_script = "/home/brian/scripts/virt-setup/first-boot.sh"
+  boot_script = " --firstboot " + path_to_script
+  subprocess.Popen("virt-sysprep" + file + host_name + run + bootscript)
 
 def create_vm():
   name_vm = " -n " + NAME
