@@ -6,4 +6,4 @@
 cp var/lib/libvirt/images/template-machine.qemu /home/kvm/templates/template.qemu
 
 #use virt-sysprep to prepare the image. Uses default operations settings.
-virt-sysprep -a /home/kvm/templates/template.qemu
+virt-sysprep -a /home/kvm/templates/template.qemu --operations abrt-data, bash-history, crash-data, fs-uuids, kerberos-data, logfiles, lvm-uuids, machine-id, net-hwaddr, yum-uuid
